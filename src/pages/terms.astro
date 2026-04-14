@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const lastUpdated = '2026-04-13'
+---
+
+<Layout title="利用規約 | FocusRest" description="FocusRestの利用規約です。">
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <a href="/" class="back-link">← トップへ戻る</a>
+        <h1>利用規約</h1>
+        <p class="meta">最終更新日: {lastUpdated} ／ 対応プラットフォーム: iOS</p>
+      </header>
+
+      <div class="content">
+        <section>
+          <h2>1. 同意について</h2>
+          <p>
+            本利用規約（以下「本規約」）は、FocusRest（以下「本アプリ」）の利用条件を定めるものです。
+            本アプリをダウンロード・使用することで、本規約に同意したものとみなします。
+            同意いただけない場合は、本アプリのご利用をお控えください。
+          </p>
+        </section>
+
+        <section>
+          <h2>2. 利用条件</h2>
+          <ul>
+            <li>本アプリは個人的・非商業的な目的でのみ使用できます。</li>
+            <li>本アプリのリバースエンジニアリング、改変、再配布は禁止します。</li>
+            <li>本アプリを通じて違法行為を行うことを禁止します。</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. 無料プランとプレミアムプラン</h2>
+
+          <h3>無料プラン</h3>
+          <ul>
+            <li>全ての基本機能を無料でご利用いただけます。</li>
+            <li>Google AdMobによる広告が表示されます。</li>
+          </ul>
+
+          <h3>プレミアムプラン</h3>
+          <ul>
+            <li>アプリ内購入によりプレミアムプランをご利用いただけます。</li>
+            <li>プレミアムプランでは広告が非表示になります。</li>
+            <li>購入はApp Storeを通じて処理されます。Appleのキャンセルポリシーが適用されます。</li>
+            <li>購入済みのプレミアムプランは、同じApple IDでサインインすることで復元できます。</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. 知的財産権</h2>
+          <p>
+            本アプリに含まれるすべてのコンテンツ（デザイン、ロゴ、テキスト等）の著作権は開発者に帰属します。
+          </p>
+        </section>
+
+        <section>
+          <h2>5. 免責事項</h2>
+          <ul>
+            <li>本アプリは「現状のまま」提供されます。</li>
+            <li>本アプリの使用によって生じたいかなる損害についても、開発者は責任を負いません。</li>
+            <li>本アプリの継続的な提供を保証するものではありません。</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. サービスの変更・終了</h2>
+          <p>
+            開発者は、事前の通知なく本アプリの機能変更・サービス終了を行う場合があります。
+          </p>
+        </section>
+
+        <section>
+          <h2>7. 準拠法</h2>
+          <p>
+            本規約は日本法に準拠します。本規約に関する紛争は、開発者の所在地を管轄する裁判所を
+            第一審の専属的合意管轄裁判所とします。
+          </p>
+        </section>
+
+        <section>
+          <h2>8. お問い合わせ</h2>
+          <p>本規約に関するご質問は、以下よりお問い合わせください。</p>
+          <p>
+            <strong>開発者:</strong> takumi3110<br />
+            <strong>連絡先:</strong> （メールアドレスを記載）
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 60px 0 100px;
+  }
+
+  .page-header {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--accent-bright);
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 40%, var(--accent-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-bright);
+    padding-left: 14px;
+    border-left: 3px solid var(--accent);
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 8px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  strong {
+    color: var(--text);
+  }
+</style>

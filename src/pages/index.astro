@@ -1,11 +1,597 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const features = [
+  {
+    icon: '⏱',
+    title: 'カスタムタイマー',
+    description: '作業時間・休憩時間・セット数を自由に設定。ポモドーロでも筋トレインターバルでも使える。',
+  },
+  {
+    icon: '🔔',
+    title: '残り時間お知らせ',
+    description: 'フェーズ終了前に音でカウントダウン。タイマーを見なくても次のアクションがわかる。',
+  },
+  {
+    icon: '🎵',
+    title: 'アラーム音カスタマイズ',
+    description: '集中タイムと休憩タイムのアラーム音を個別に設定。自分に合ったリズムを作れる。',
+  },
+  {
+    icon: '🎨',
+    title: 'テーマカスタマイズ',
+    description: 'アクセントカラーとテーマ（ライト/ダーク）を自由に変更。自分好みのUIに。',
+  },
+]
 ---
 
 <Layout>
-	<Welcome />
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-focus">Focus</span><span class="logo-rest">Rest</span>
+      </div>
+      <a href="#download" class="header-cta">無料でダウンロード</a>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="badge">iOS App</span>
+        <h1 class="hero-title">
+          集中と休憩を、<br />
+          あなたのリズムに。
+        </h1>
+        <p class="hero-sub">仕事も筋トレも、インターバルで加速する。</p>
+        <p class="hero-desc">
+          ポモドーロタイマーとインターバルタイマーを一つのアプリに。
+          カスタムサウンドとテーマで、毎日の集中をもっと心地よく。
+        </p>
+        <div class="hero-actions" id="download">
+          <!-- App Store バッジ：画像を用意したら差し替えてね -->
+          <a href="#" class="appstore-btn">
+            <span class="appstore-icon">🍎</span>
+            <span class="appstore-text">
+              <span class="appstore-sub">Download on the</span>
+              <span class="appstore-main">App Store</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ヒーロー画像：スクリーンショットを用意したら <img> に差し替えてね -->
+      <div class="hero-device">
+        <div class="device-mockup">
+          <div class="device-screen">
+            <div class="placeholder-label">📱 スクリーンショット</div>
+            <div class="placeholder-sub">Hero image</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES ========== -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Features</h2>
+      <div class="features-grid">
+        {features.map((f) => (
+          <div class="feature-card">
+            <div class="feature-icon">{f.icon}</div>
+            <h3 class="feature-title">{f.title}</h3>
+            <p class="feature-desc">{f.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCREENSHOTS ========== -->
+  <section class="screenshots">
+    <div class="container">
+      <h2 class="section-title">Screenshots</h2>
+      <div class="screenshots-grid">
+        <!-- 画像を用意したら <img src="..." alt="..."> に差し替えてね -->
+        {['タイマー画面', '設定画面', 'タイマーリスト'].map((label) => (
+          <div class="screenshot-placeholder">
+            <div class="screenshot-inner">
+              <div class="placeholder-label">📱 {label}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== USE CASES ========== -->
+  <section class="use-cases">
+    <div class="container">
+      <h2 class="section-title">こんな人に</h2>
+      <div class="use-cases-grid">
+        <div class="use-case-card">
+          <div class="use-case-emoji">📚</div>
+          <h3>勉強・仕事に</h3>
+          <p>ポモドーロテクニックで25分集中＋5分休憩。集中力を維持しながら長時間のタスクをこなせる。</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-emoji">💪</div>
+          <h3>筋トレ・運動に</h3>
+          <p>運動時間と休憩時間を自由に設定。セット数も管理できるから、トレーニングに集中できる。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section class="pricing">
+    <div class="container">
+      <h2 class="section-title">料金プラン</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-label">無料</div>
+          <div class="pricing-price">¥0</div>
+          <ul class="pricing-features">
+            <li>✅ 全てのタイマー機能</li>
+            <li>✅ カスタムサウンド</li>
+            <li>✅ テーマカスタマイズ</li>
+            <li class="muted">📢 広告あり</li>
+          </ul>
+        </div>
+        <div class="pricing-card pricing-card--premium">
+          <div class="pricing-badge">おすすめ</div>
+          <div class="pricing-label">プレミアム</div>
+          <div class="pricing-price">買い切り</div>
+          <ul class="pricing-features">
+            <li>✅ 全ての無料機能</li>
+            <li>✅ <strong>広告なし</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="logo-focus">Focus</span><span class="logo-rest">Rest</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="/privacy">プライバシーポリシー</a>
+        <a href="/terms">利用規約</a>
+      </nav>
+      <p class="footer-copy">© 2026 takumi3110. All rights reserved.</p>
+    </div>
+  </footer>
 </Layout>
+
+<style>
+  /* ── Header ── */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(18, 0, 25, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+
+  .logo-focus { color: var(--accent-bright); }
+  .logo-rest  { color: var(--text); }
+
+  .header-cta {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 100px;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+
+  .header-cta:hover {
+    background: var(--accent-bright);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 100px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(149, 117, 205, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-device {
+      order: -1;
+    }
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 40%, var(--accent-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--accent-bright);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-desc { margin: 0 auto 40px; }
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .hero-actions { justify-content: center; }
+  }
+
+  .appstore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 24px;
+    box-shadow: var(--shadow-neo);
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .appstore-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.6), -2px -2px 12px rgba(149,117,205,0.15);
+    text-decoration: none;
+  }
+
+  .appstore-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .appstore-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .appstore-sub {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .appstore-main {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Device mockup */
+  .hero-device {
+    display: flex;
+    justify-content: center;
+  }
+
+  .device-mockup {
+    width: 260px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: var(--shadow-neo), 0 0 60px var(--accent-glow);
+  }
+
+  .device-screen {
+    background: #0a0010;
+    border-radius: 28px;
+    aspect-ratio: 9/19;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(149, 117, 205, 0.1);
+  }
+
+  /* ── Placeholder共通 ── */
+  .placeholder-label {
+    font-size: 0.85rem;
+    color: var(--accent-bright);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .placeholder-sub {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  /* ── Features ── */
+  .features {
+    padding: 100px 0;
+    background: linear-gradient(180deg, transparent, rgba(149,117,205,0.05), transparent);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 24px;
+    box-shadow: var(--shadow-neo);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 4px 24px rgba(0,0,0,0.6), -2px -2px 12px rgba(149,117,205,0.12);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--accent-bright);
+  }
+
+  .feature-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── Screenshots ── */
+  .screenshots {
+    padding: 100px 0;
+  }
+
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .screenshots-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .screenshot-placeholder {
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .screenshot-inner {
+    aspect-ratio: 9/19;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Use Cases ── */
+  .use-cases {
+    padding: 100px 0;
+    background: linear-gradient(180deg, transparent, rgba(149,117,205,0.05), transparent);
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+  }
+
+  .use-case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-neo);
+  }
+
+  .use-case-emoji {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .use-case-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-bright);
+    margin-bottom: 12px;
+  }
+
+  .use-case-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Pricing ── */
+  .pricing {
+    padding: 100px 0;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    box-shadow: var(--shadow-neo);
+    position: relative;
+  }
+
+  .pricing-card--premium {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-neo), 0 0 30px var(--accent-glow);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .pricing-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .pricing-price {
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-bright);
+    margin-bottom: 24px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pricing-features li {
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .pricing-features li.muted {
+    color: var(--text-muted);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0;
+    margin-top: 40px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-nav a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .footer-nav a:hover {
+    color: var(--accent-bright);
+    text-decoration: none;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+</style>

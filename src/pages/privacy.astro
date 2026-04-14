@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const lastUpdated = '2026-04-13'
+---
+
+<Layout title="プライバシーポリシー | FocusRest" description="FocusRestのプライバシーポリシーです。">
+  <main>
+    <div class="container">
+      <header class="page-header">
+        <a href="/" class="back-link">← トップへ戻る</a>
+        <h1>プライバシーポリシー</h1>
+        <p class="meta">最終更新日: {lastUpdated} ／ 対応プラットフォーム: iOS</p>
+      </header>
+
+      <div class="content">
+        <section>
+          <h2>1. はじめに</h2>
+          <p>
+            FocusRest（以下「本アプリ」）をご利用いただきありがとうございます。
+            本プライバシーポリシーは、本アプリが収集する情報およびその利用方法について説明します。
+          </p>
+        </section>
+
+        <section>
+          <h2>2. 収集する情報</h2>
+
+          <h3>2.1 アプリ内で収集・保存する情報</h3>
+          <p>
+            本アプリは、タイマー設定およびアプリ設定（テーマ、サウンド設定など）をお使いの端末内にのみ保存します。
+            これらのデータは外部サーバーには送信されず、第三者と共有されることはありません。
+          </p>
+          <ul>
+            <li>タイマー設定（タイマー名、作業時間、休憩時間、セット数）</li>
+            <li>アプリ設定（テーマ、アクセントカラー、サウンド設定、音量、バイブレーション設定）</li>
+          </ul>
+
+          <h3>2.2 広告サービス（Google AdMob）</h3>
+          <p>
+            無料版の本アプリはGoogle AdMob（Google LLC）による広告を表示します。
+            AdMobは以下の情報を収集する場合があります：
+          </p>
+          <ul>
+            <li>広告識別子（IDFA）</li>
+            <li>デバイス情報（機種、OSバージョンなど）</li>
+            <li>大まかな位置情報</li>
+            <li>広告の表示・クリックに関する情報</li>
+          </ul>
+          <p>
+            AdMobのプライバシーポリシー:
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">
+              https://policies.google.com/privacy
+            </a>
+          </p>
+
+          <h3>2.3 課金サービス（RevenueCat）</h3>
+          <p>
+            プレミアムプランの購入にはRevenueCat（RevenueCat, Inc.）を使用します。
+            RevenueCatは以下の情報を収集する場合があります：
+          </p>
+          <ul>
+            <li>App Store の購入情報・レシートデータ</li>
+            <li>RevenueCatが発行する匿名ユーザーID</li>
+            <li>デバイス情報（OSバージョン、アプリバージョンなど）</li>
+          </ul>
+          <p>
+            RevenueCatのプライバシーポリシー:
+            <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">
+              https://www.revenuecat.com/privacy
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h2>3. 情報の利用目的</h2>
+          <ul>
+            <li>本アプリの機能提供および改善</li>
+            <li>広告の表示（無料ユーザーのみ）</li>
+            <li>課金・購入状態の管理</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>4. 第三者への情報提供</h2>
+          <p>
+            本アプリ自身がユーザーの個人情報を第三者に販売・提供することはありません。
+            ただし、上記の広告サービス（AdMob）および課金サービス（RevenueCat）は、
+            それぞれのプライバシーポリシーに従いデータを処理します。
+          </p>
+        </section>
+
+        <section>
+          <h2>5. データの保持と削除</h2>
+          <p>
+            端末内に保存されたデータ（タイマー設定・アプリ設定）は、アプリを削除することで完全に消去されます。
+            AdMobおよびRevenueCatが収集したデータについては、各サービスのプライバシーポリシーに従います。
+          </p>
+        </section>
+
+        <section>
+          <h2>6. 子どものプライバシー</h2>
+          <p>
+            本アプリは13歳未満の子どもを対象としていません。
+            13歳未満の方は保護者の同意のもとでご利用ください。
+          </p>
+        </section>
+
+        <section>
+          <h2>7. プライバシーポリシーの変更</h2>
+          <p>
+            本プライバシーポリシーは必要に応じて更新される場合があります。
+            重要な変更がある場合は、アプリのアップデートを通じてお知らせします。
+          </p>
+        </section>
+
+        <section>
+          <h2>8. お問い合わせ</h2>
+          <p>プライバシーに関するご質問は、以下よりお問い合わせください。</p>
+          <p>
+            <strong>開発者:</strong> takumi3110<br />
+            <strong>連絡先:</strong> （メールアドレスを記載）
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 60px 0 100px;
+  }
+
+  .page-header {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    transition: color 0.2s;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--accent-bright);
+    text-decoration: none;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 40%, var(--accent-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-bright);
+    padding-left: 14px;
+    border-left: 3px solid var(--accent);
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 8px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  ul li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  a {
+    color: var(--accent-bright);
+    word-break: break-all;
+  }
+
+  strong {
+    color: var(--text);
+  }
+</style>
