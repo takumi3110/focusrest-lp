@@ -4,6 +4,7 @@ import hero from '../assets/hero.png'
 import timerImg from '../assets/timer.png'
 import settingsImg from '../assets/settings.png'
 import timerListImg from '../assets/list.png'
+import appStoreBadge from '../assets/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg.svg'
 
 const features = [
   {
@@ -57,11 +58,7 @@ const features = [
         <div class="hero-actions" id="download">
           <!-- App Store バッジ：画像を用意したら差し替えてね -->
           <a href="#" class="appstore-btn">
-            <span class="appstore-icon">🍎</span>
-            <span class="appstore-text">
-              <span class="appstore-sub">Download on the</span>
-              <span class="appstore-main">App Store</span>
-            </span>
+            <img src={appStoreBadge.src} alt="App Store badge" />
           </a>
         </div>
       </div>
@@ -295,44 +292,20 @@ const features = [
   }
 
   .appstore-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 12px 24px;
-    box-shadow: var(--shadow-neo);
+    display: inline-block;
     text-decoration: none;
-    transition: transform 0.15s, box-shadow 0.15s;
+    transition: opacity 0.15s;
   }
 
   .appstore-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.6), -2px -2px 12px rgba(149,117,205,0.15);
+    opacity: 0.85;
     text-decoration: none;
   }
 
-  .appstore-icon {
-    font-size: 1.8rem;
-    line-height: 1;
-  }
-
-  .appstore-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .appstore-sub {
-    font-size: 0.65rem;
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-
-  .appstore-main {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
+  .appstore-btn img {
+    height: 48px;
+    width: auto;
+    display: block;
   }
 
   /* Device mockup */
