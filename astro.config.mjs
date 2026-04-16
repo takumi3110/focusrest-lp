@@ -1,9 +1,11 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig} from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  image: {
-    service: passthroughImageService(),
-  },
+  site: 'https://focusrest-lp.garitto.jp',
+  base: '/focusrest-lp',
+  build: {
+    assetsPrefix: '/focusrest-lp',
+  }
 });
