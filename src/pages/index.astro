@@ -4,7 +4,7 @@ import hero from '../assets/hero.png'
 import timerImg from '../assets/timer.png'
 import settingsImg from '../assets/settings.png'
 import timerListImg from '../assets/list.png'
-import appStoreBadge from '../assets/Download_on_the_App_Store_Badge_JP_RGB_wht_100317.svg.svg'
+import appStoreBadge from '../assets/app_store_badge_jp_white.svg'
 
 const features = [
   {
@@ -56,7 +56,6 @@ const features = [
           カスタムサウンドとテーマで、毎日の集中をもっと心地よく。
         </p>
         <div class="hero-actions" id="download">
-          <!-- App Store バッジ：画像を用意したら差し替えてね -->
           <a href="#" class="appstore-btn">
             <img src={appStoreBadge.src} alt="App Store badge" />
           </a>
@@ -152,6 +151,11 @@ const features = [
             <li>✅ <strong>広告なし</strong></li>
           </ul>
         </div>
+      </div>
+      <div class="pricing-cta">
+        <a href="#" class="appstore-btn">
+          <img src={appStoreBadge.src} alt="App Store badge" />
+        </a>
       </div>
     </div>
   </section>
@@ -480,6 +484,12 @@ const features = [
     gap: 24px;
     max-width: 640px;
     margin: 0 auto;
+  }
+
+  .pricing-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
   }
 
   .pricing-card {
