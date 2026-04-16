@@ -4,7 +4,6 @@ import hero from '../assets/hero.png'
 import timerImg from '../assets/timer.png'
 import settingsImg from '../assets/settings.png'
 import timerListImg from '../assets/list.png'
-import { Image } from 'astro:assets'
 
 const features = [
   {
@@ -71,7 +70,7 @@ const features = [
       <div class="hero-device">
         <div class="device-mockup">
           <div class="device-screen">
-            <Image class="hero-img" src={hero} alt="Hero image" />
+            <img class="hero-img" src={hero.src} alt="Hero image" />
           </div>
         </div>
       </div>
@@ -106,7 +105,7 @@ const features = [
           {src: timerListImg, label: 'タイマーリスト'},
         ].map((item) => (
           <div class="screenshot-card">
-            <Image src={item.src} alt={item.label} />
+            <img src={item.src.src} alt={item.label} />
           </div>
         ))}
       </div>
