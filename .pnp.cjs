@@ -29,7 +29,8 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["astro", "npm:6.1.5"],\
-          ["focusrest-lp", "workspace:."]\
+          ["focusrest-lp", "workspace:."],\
+          ["sharp", "npm:0.34.5"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -1850,7 +1851,8 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["astro", "npm:6.1.5"],\
-          ["focusrest-lp", "workspace:."]\
+          ["focusrest-lp", "workspace:."],\
+          ["sharp", "npm:0.34.5"]\
         ],\
         "linkType": "SOFT"\
       }]\
