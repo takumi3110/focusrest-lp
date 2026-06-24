@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import hero from '../assets/hero.png'
 import timerImg from '../assets/timer.png'
 import settingsImg from '../assets/settings.png'
 import timerListImg from '../assets/list.png'
@@ -8,25 +7,35 @@ import appStoreBadge from '../assets/app_store_badge_jp_white.svg'
 
 const features = [
   {
+    no: '01',
     icon: '⏱',
     title: 'カスタムタイマー',
-    description: '作業時間・休憩時間・セット数を自由に設定。ポモドーロでも筋トレインターバルでも使える。',
+    description: '作業・休憩・セット数を自由に設定。ポモドーロでも筋トレのインターバルでも、自分の型に合わせられる。',
   },
   {
+    no: '02',
     icon: '🔔',
     title: '残り時間お知らせ',
-    description: 'フェーズ終了前に音でカウントダウン。タイマーを見なくても次のアクションがわかる。',
+    description: 'フェーズ終了前に音でカウントダウン。画面を見なくても、次のアクションへ自然に切り替わる。',
   },
   {
+    no: '03',
     icon: '🎵',
     title: 'アラーム音カスタマイズ',
-    description: '集中タイムと休憩タイムのアラーム音を個別に設定。自分に合ったリズムを作れる。',
+    description: 'FIGHTとRESTのアラーム音を別々に設定。音だけで「今どっちの時間か」が体に染み込む。',
   },
   {
+    no: '04',
     icon: '🎨',
     title: 'テーマカスタマイズ',
-    description: 'アクセントカラーとテーマ（ライト/ダーク）を自由に変更。自分好みのUIに。',
+    description: 'アクセントカラーとライト/ダークを自由に変更。毎日見る画面を、自分の気分に合わせて。',
   },
+]
+
+const screens = [
+  { src: timerImg, label: 'タイマー', note: '今のフェーズと残り時間が、ひと目で。' },
+  { src: settingsImg, label: '設定', note: '時間・音・セット数を細かく調整。' },
+  { src: timerListImg, label: 'タイマーリスト', note: 'よく使う型を保存して、即スタート。' },
 ]
 ---
 
@@ -34,53 +43,84 @@ const features = [
   <!-- ========== HEADER ========== -->
   <header class="header">
     <div class="container header-inner">
-      <div class="logo">
-        <span class="logo-focus">Focus</span><span class="logo-rest">Rest</span>
-      </div>
-      <a href="#download" class="header-cta">無料でダウンロード</a>
+      <a href="#top" class="logo">
+        <span class="logo-fight">Fight</span><span class="logo-and">and</span><span class="logo-rest">Rest</span>
+      </a>
+      <a href="#download" class="header-cta">無料で始める</a>
     </div>
   </header>
 
   <!-- ========== HERO ========== -->
-  <section class="hero">
+  <section class="hero" id="top" data-phase="fight">
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <span class="badge">iOS App</span>
-        <h1 class="hero-title">
-          集中と休憩を、<br />
-          あなたのリズムに。
-        </h1>
-        <p class="hero-sub">仕事も筋トレも、インターバルで加速する。</p>
+        <span class="eyebrow">iOS · INTERVAL TIMER</span>
+        <h1 class="hero-title">集中と休憩を、<br />あなたのリズムに。</h1>
+        <p class="hero-sub">仕事も筋トレも、インターバルでメリハリを。</p>
         <p class="hero-desc">
-          ポモドーロタイマーとインターバルタイマーを一つのアプリに。
-          カスタムサウンドとテーマで、毎日の集中をもっと心地よく。
+          <b class="hl hl-fight">FIGHT</b> と <b class="hl hl-rest">REST</b> を行き来するだけ。
+          カスタムの時間・音・テーマで、自分だけのリズムを刻める。
         </p>
+
         <div class="hero-actions" id="download">
-          <a href="#" class="appstore-btn">
-            <img src={appStoreBadge.src} alt="App Store badge" />
+          <a href="#" class="appstore-btn" aria-label="App Store でダウンロード">
+            <img src={appStoreBadge.src} alt="App Store でダウンロード" width="160" height="48" />
           </a>
         </div>
+
+        <ul class="legend" aria-hidden="true">
+          <li class="leg leg-fight"><span class="leg-dot"></span>FIGHT<small>集中する時間</small></li>
+          <li class="leg leg-rest"><span class="leg-dot"></span>REST<small>整える時間</small></li>
+        </ul>
       </div>
 
-      <!-- ヒーロー画像：スクリーンショットを用意したら <img> に差し替えてね -->
+      <!-- Signature: a live interval timer running inside the phone -->
       <div class="hero-device">
-        <div class="device-mockup">
+        <div class="device" data-reveal>
+          <div class="device-notch" aria-hidden="true"></div>
           <div class="device-screen">
-            <img class="hero-img" src={hero.src} alt="Hero image" />
+            <div class="app-statusbar" aria-hidden="true">
+              <span>9:41</span>
+              <span class="app-name">FightandRest</span>
+              <span>􀙇</span>
+            </div>
+
+            <div class="tmr" role="img" aria-label="インターバルタイマーのデモ。FIGHTとRESTを切り替えながらカウントダウンします。">
+              <div class="tmr-phase">
+                <span class="tmr-phase-label" data-tmr="label">FIGHT</span>
+                <span class="tmr-phase-sub" data-tmr="sub">集中</span>
+              </div>
+
+              <div class="tmr-ring" data-tmr="ring">
+                <div class="tmr-core">
+                  <div class="tmr-time" data-tmr="time">25:00</div>
+                  <div class="tmr-total">/ <span data-tmr="total">25:00</span></div>
+                </div>
+              </div>
+
+              <div class="tmr-meta">
+                <div class="tmr-set">SET <b data-tmr="set">1</b> / 4</div>
+                <div class="tmr-next">NEXT · <span data-tmr="next">休憩 5:00</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
     </div>
   </section>
 
   <!-- ========== FEATURES ========== -->
-  <section class="features">
+  <section class="block features pole-fight">
     <div class="container">
-      <h2 class="section-title">Features</h2>
+      <div class="section-head">
+        <span class="eyebrow">TOOLKIT / 機能</span>
+        <h2 class="section-title">リズムを作る、4つの調整つまみ</h2>
+      </div>
       <div class="features-grid">
         {features.map((f) => (
           <div class="feature-card">
+            <span class="feature-no">{f.no}</span>
             <div class="feature-icon">{f.icon}</div>
             <h3 class="feature-title">{f.title}</h3>
             <p class="feature-desc">{f.description}</p>
@@ -91,55 +131,66 @@ const features = [
   </section>
 
   <!-- ========== SCREENSHOTS ========== -->
-  <section class="screenshots">
+  <section class="block screenshots pole-rest">
     <div class="container">
-      <h2 class="section-title">Screenshots</h2>
+      <div class="section-head">
+        <span class="eyebrow">SCREENS / 画面</span>
+        <h2 class="section-title">迷わず使える、整った画面</h2>
+      </div>
       <div class="screenshots-grid">
-        {[
-          {src: timerImg, label: 'タイマー画面'},
-          {src: settingsImg, label: '設定画面'},
-          {src: timerListImg, label: 'タイマーリスト'},
-        ].map((item) => (
-          <div class="screenshot-card">
-            <img src={item.src.src} alt={item.label} />
-          </div>
+        {screens.map((item) => (
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <img src={item.src.src} alt={`${item.label}の画面`} loading="lazy" />
+            </div>
+            <figcaption class="screenshot-cap">
+              <span class="screenshot-label">{item.label}</span>
+              <span class="screenshot-note">{item.note}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>
   </section>
 
   <!-- ========== USE CASES ========== -->
-  <section class="use-cases">
+  <section class="block use-cases pole-fight">
     <div class="container">
-      <h2 class="section-title">こんな人に</h2>
+      <div class="section-head">
+        <span class="eyebrow">SCENES / 使いどころ</span>
+        <h2 class="section-title">FIGHT も REST も、選ばない</h2>
+      </div>
       <div class="use-cases-grid">
         <div class="use-case-card">
           <div class="use-case-emoji">📚</div>
           <h3>勉強・仕事に</h3>
-          <p>ポモドーロテクニックで25分集中＋5分休憩。集中力を維持しながら長時間のタスクをこなせる。</p>
+          <p>25分集中＋5分休憩のポモドーロで、長いタスクも息切れせずに走り切る。</p>
         </div>
         <div class="use-case-card">
           <div class="use-case-emoji">💪</div>
           <h3>筋トレ・運動に</h3>
-          <p>運動時間と休憩時間を自由に設定。セット数も管理できるから、トレーニングに集中できる。</p>
+          <p>運動と休憩の時間、セット数を決めて開始。数えるのはアプリに任せて、体に集中。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== PRICING ========== -->
-  <section class="pricing">
+  <section class="block pricing pole-rest">
     <div class="container">
-      <h2 class="section-title">料金プラン</h2>
+      <div class="section-head section-head--center">
+        <span class="eyebrow">ACCESS / 料金</span>
+        <h2 class="section-title">まず無料で、リズムを試す</h2>
+      </div>
       <div class="pricing-grid">
         <div class="pricing-card">
           <div class="pricing-label">無料</div>
           <div class="pricing-price">¥0</div>
           <ul class="pricing-features">
-            <li>✅ 全てのタイマー機能</li>
-            <li>✅ カスタムサウンド</li>
-            <li>✅ テーマカスタマイズ</li>
-            <li class="muted">📢 広告あり</li>
+            <li>すべてのタイマー機能</li>
+            <li>カスタムサウンド</li>
+            <li>テーマカスタマイズ</li>
+            <li class="muted">広告あり</li>
           </ul>
         </div>
         <div class="pricing-card pricing-card--premium">
@@ -147,14 +198,15 @@ const features = [
           <div class="pricing-label">プレミアム</div>
           <div class="pricing-price">買い切り</div>
           <ul class="pricing-features">
-            <li>✅ 全ての無料機能</li>
-            <li>✅ <strong>広告なし</strong></li>
+            <li>無料のすべての機能</li>
+            <li><strong>広告なし</strong></li>
+            <li class="muted">一度の購入でずっと</li>
           </ul>
         </div>
       </div>
       <div class="pricing-cta">
-        <a href="#" class="appstore-btn">
-          <img src={appStoreBadge.src} alt="App Store badge" />
+        <a href="#" class="appstore-btn" aria-label="App Store でダウンロード">
+          <img src={appStoreBadge.src} alt="App Store でダウンロード" width="160" height="48" />
         </a>
       </div>
     </div>
@@ -164,27 +216,27 @@ const features = [
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <span class="logo-focus">Focus</span><span class="logo-rest">Rest</span>
+        <span class="logo-fight">Fight</span><span class="logo-and">and</span><span class="logo-rest">Rest</span>
       </div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="フッター">
         <a href="/privacy">プライバシーポリシー</a>
         <a href="/terms">利用規約</a>
       </nav>
-      <p class="footer-copy">© 2026 takumi3110. All rights reserved.</p>
+      <p class="footer-copy">© 2026 garitto All rights reserved.</p>
     </div>
   </footer>
 </Layout>
 
 <style>
-  /* ── Header ── */
+  /* ───────────── Header ───────────── */
   .header {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(18, 0, 25, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 0;
+    background: rgba(14, 14, 19, 0.72);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
   }
 
   .header-inner {
@@ -194,297 +246,503 @@ const features = [
   }
 
   .logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text);
   }
 
-  .logo-focus { color: var(--accent-bright); }
-  .logo-rest  { color: var(--text); }
+  .logo-fight { color: var(--fight); }
+  .logo-and   { color: var(--text-mute); margin: 0 1px; font-weight: 600; }
+  .logo-rest  { color: var(--rest); }
 
   .header-cta {
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     font-weight: 700;
-    padding: 8px 20px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    padding: 9px 18px;
     border-radius: 100px;
-    transition: background 0.2s, transform 0.15s;
-    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
 
   .header-cta:hover {
-    background: var(--accent-bright);
-    transform: translateY(-1px);
-    text-decoration: none;
+    border-color: var(--fight);
+    color: var(--fight-soft);
+    background: var(--fight-glow);
   }
 
-  /* ── Hero ── */
+  /* ───────────── Hero ───────────── */
   .hero {
-    padding: 100px 0 80px;
     position: relative;
+    padding: 96px 0 88px;
     overflow: hidden;
+    /* the active pole follows the live timer phase via [data-phase] */
+    --accent: var(--fight);
+    --accent-soft: var(--fight-soft);
+    --accent-glow: var(--fight-glow);
+    transition: --accent 0.6s;
   }
 
-  .hero::before {
+  .hero[data-phase='rest'] {
+    --accent: var(--rest);
+    --accent-soft: var(--rest-soft);
+    --accent-glow: var(--rest-glow);
+  }
+
+  /* two opposing glows — the one matching the current phase intensifies */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(620px 480px at 88% -8%, var(--fight-glow), transparent 60%),
+      radial-gradient(560px 460px at 6% 112%, var(--rest-glow), transparent 60%);
+  }
+
+  .hero-bg::after {
     content: '';
     position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(149, 117, 205, 0.15) 0%, transparent 70%);
-    pointer-events: none;
+    inset: 0;
+    background: radial-gradient(680px 540px at 70% 18%, var(--accent-glow), transparent 62%);
+    opacity: 0.9;
+    transition: background 0.6s ease;
   }
 
   .hero-inner {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
     align-items: center;
   }
 
-  @media (max-width: 768px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-
-    .hero-device {
-      order: -1;
-    }
-  }
-
   .hero-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--font-body);
+    font-size: clamp(2.1rem, 5.4vw, 3.4rem);
     font-weight: 700;
-    line-height: 1.25;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #fff 40%, var(--accent-bright));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1.18;
+    letter-spacing: 0.01em;
+    margin: 18px 0 18px;
   }
 
   .hero-sub {
-    font-size: 1.1rem;
-    color: var(--accent-bright);
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 14px;
   }
 
   .hero-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 40px;
-    max-width: 420px;
+    color: var(--text-mute);
+    font-size: 0.98rem;
+    max-width: 440px;
+    margin-bottom: 34px;
   }
 
-  @media (max-width: 768px) {
-    .hero-desc { margin: 0 auto 40px; }
+  .hl {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.92em;
+    letter-spacing: 0.04em;
   }
+  .hl-fight { color: var(--fight-soft); }
+  .hl-rest  { color: var(--rest-soft); }
 
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  @media (max-width: 768px) {
-    .hero-actions { justify-content: center; }
-  }
+  .hero-actions { margin-bottom: 32px; }
 
   .appstore-btn {
     display: inline-block;
-    text-decoration: none;
-    transition: opacity 0.15s;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .appstore-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .appstore-btn img { height: 48px; width: auto; }
+
+  /* fight/rest legend */
+  .legend {
+    list-style: none;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
   }
 
-  .appstore-btn:hover {
-    opacity: 0.85;
-    text-decoration: none;
+  .leg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-mute);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 7px 14px;
+    transition: color 0.4s, border-color 0.4s, background 0.4s;
   }
-
-  .appstore-btn img {
-    height: 48px;
-    width: auto;
-    display: block;
+  .leg small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--text-mute);
   }
+  .leg-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: currentColor;
+  }
+  .leg-fight { color: var(--fight); }
+  .leg-rest  { color: var(--rest); }
 
-  /* Device mockup */
+  /* active phase chip lights up */
+  .hero[data-phase='fight'] .leg-fight,
+  .hero[data-phase='rest'] .leg-rest {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    color: var(--accent-soft);
+  }
+  .hero[data-phase='fight'] .leg-fight .leg-dot { box-shadow: 0 0 12px var(--fight); }
+  .hero[data-phase='rest'] .leg-rest .leg-dot { box-shadow: 0 0 12px var(--rest); }
+
+  /* ───────── Phone + live timer ───────── */
   .hero-device {
     display: flex;
     justify-content: center;
   }
 
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 28px;
+  .device {
+    position: relative;
+    width: 290px;
+    padding: 12px;
+    border-radius: 46px;
+    background: linear-gradient(160deg, #23232e, #101016);
+    border: 1px solid var(--line-strong);
+    box-shadow:
+      0 40px 80px -30px rgba(0, 0, 0, 0.9),
+      0 0 70px -10px var(--accent-glow);
+    transition: box-shadow 0.6s ease;
   }
 
-  .device-mockup {
-    width: 260px;
-    background: var(--bg-card);
-    border: 2px solid var(--border);
-    border-radius: 40px;
-    padding: 20px;
-    box-shadow: var(--shadow-neo), 0 0 60px var(--accent-glow);
+  .device-notch {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92px;
+    height: 22px;
+    background: #0a0a0e;
+    border-radius: 0 0 14px 14px;
+    z-index: 2;
   }
 
   .device-screen {
-    background: #0a0010;
-    border-radius: 28px;
-    aspect-ratio: 9/19;
+    position: relative;
+    border-radius: 36px;
+    aspect-ratio: 9 / 19.3;
+    background:
+      radial-gradient(120% 70% at 50% 0%, var(--accent-glow), transparent 60%),
+      #0a0a0e;
+    overflow: hidden;
+    padding: 16px 18px 22px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.6s ease;
+  }
+
+  .app-statusbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-mute);
+    padding: 6px 4px 0;
+  }
+  .app-statusbar .app-name {
+    color: var(--accent-soft);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .tmr {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(149, 117, 205, 0.1);
+    gap: 22px;
   }
 
-  /* ── Placeholder共通 ── */
-  .placeholder-label {
-    font-size: 0.85rem;
-    color: var(--accent-bright);
+  .tmr-phase { text-align: center; }
+  .tmr-phase-label {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    transition: color 0.5s ease;
+  }
+  .tmr-phase-sub {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--text-mute);
+    letter-spacing: 0.2em;
+  }
+
+  .tmr-ring {
+    --p: 1;
+    position: relative;
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(
+      var(--accent) calc(var(--p) * 360deg),
+      rgba(255, 255, 255, 0.07) 0
+    );
+  }
+  .tmr-ring::before {
+    content: '';
+    position: absolute;
+    inset: 13px;
+    border-radius: 50%;
+    background: #0a0a0e;
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.6);
+  }
+
+  .tmr-core { position: relative; text-align: center; }
+  .tmr-time {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
     font-weight: 700;
-    text-align: center;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .tmr-total {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-mute);
+    margin-top: 2px;
   }
 
-  .placeholder-sub {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-    text-align: center;
+  .tmr-meta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--text-mute);
   }
+  .tmr-set b { color: var(--text); }
+  .tmr-next { color: var(--accent-soft); transition: color 0.5s ease; }
 
-  /* ── Features ── */
-  .features {
-    padding: 100px 0;
-    background: linear-gradient(180deg, transparent, rgba(149,117,205,0.05), transparent);
-  }
+  /* ───────────── Shared blocks ───────────── */
+  .block { padding: 96px 0; }
 
+  .block + .block { border-top: 1px solid var(--line); }
+
+  .section-head--center { text-align: center; }
+
+  /* ───────────── Features ───────────── */
   .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    gap: 20px;
   }
 
   .feature-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 24px;
-    box-shadow: var(--shadow-neo);
-    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 30px 24px 26px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
   }
-
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
   .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 4px 4px 24px rgba(0,0,0,0.6), -2px -2px 12px rgba(149,117,205,0.12);
+    transform: translateY(-3px);
+    border-color: var(--accent);
   }
+  .feature-card:hover::before { transform: scaleX(1); }
 
-  .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
+  .feature-no {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-mute);
+    letter-spacing: 0.08em;
   }
-
+  .feature-icon { font-size: 1.7rem; margin-bottom: 16px; }
   .feature-title {
-    font-size: 1rem;
+    font-size: 1.02rem;
     font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--accent-bright);
+    margin-bottom: 9px;
+    color: var(--text);
   }
-
   .feature-desc {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.7;
+    font-size: 0.86rem;
+    color: var(--text-mute);
+    line-height: 1.8;
   }
 
-  /* ── Screenshots ── */
-  .screenshots {
-    padding: 100px 0;
-  }
-
+  /* ───────────── Screenshots ───────────── */
   .screenshots-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
   }
 
-  @media (max-width: 640px) {
-    .screenshots-grid {
-      grid-template-columns: 1fr;
-    }
-  }
+  .screenshot-card { margin: 0; }
 
-  .screenshot-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
+  .screenshot-frame {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
     overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .screenshot-card:hover .screenshot-frame {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  .screenshot-frame img { width: 100%; height: auto; }
+
+  .screenshot-cap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 16px 4px 0;
+  }
+  .screenshot-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent-soft);
+  }
+  .screenshot-note {
+    font-size: 0.82rem;
+    color: var(--text-mute);
   }
 
-  .screenshot-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* ── Use Cases ── */
-  .use-cases {
-    padding: 100px 0;
-    background: linear-gradient(180deg, transparent, rgba(149,117,205,0.05), transparent);
-  }
-
+  /* ───────────── Use cases ───────────── */
   .use-cases-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
+    gap: 24px;
   }
-
   .use-case-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 40px 32px;
-    text-align: center;
-    box-shadow: var(--shadow-neo);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 18px;
+    padding: 34px 30px;
   }
-
-  .use-case-emoji {
-    font-size: 3rem;
-    margin-bottom: 16px;
-  }
-
+  .use-case-emoji { font-size: 2.4rem; margin-bottom: 14px; }
   .use-case-card h3 {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--accent-bright);
-    margin-bottom: 12px;
+    color: var(--text);
+    margin-bottom: 10px;
   }
-
   .use-case-card p {
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: var(--text-mute);
   }
 
-  /* ── Pricing ── */
-  .pricing {
-    padding: 100px 0;
-  }
-
+  /* ───────────── Pricing ───────────── */
   .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-    max-width: 640px;
+    grid-template-columns: repeat(auto-fit, minmax(248px, 1fr));
+    gap: 20px;
+    max-width: 620px;
     margin: 0 auto;
   }
+  .pricing-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 34px 30px;
+  }
+  .pricing-card--premium {
+    border-color: var(--accent);
+    box-shadow: 0 0 40px -12px var(--accent-glow);
+  }
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    background: var(--accent);
+    color: #0a0a0d;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .pricing-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-mute);
+    margin-bottom: 6px;
+  }
+  .pricing-price {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-soft);
+    margin-bottom: 22px;
+  }
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+  .pricing-features li {
+    font-size: 0.9rem;
+    color: var(--text);
+    padding-left: 22px;
+    position: relative;
+  }
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .pricing-features li.muted { color: var(--text-mute); }
+  .pricing-features li.muted::before { content: '—'; color: var(--text-mute); }
 
   .pricing-cta {
     display: flex;
@@ -492,100 +750,147 @@ const features = [
     margin-top: 40px;
   }
 
-  .pricing-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 40px 32px;
-    box-shadow: var(--shadow-neo);
-    position: relative;
-  }
-
-  .pricing-card--premium {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-neo), 0 0 30px var(--accent-glow);
-  }
-
-  .pricing-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 4px 16px;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  .pricing-label {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-
-  .pricing-price {
-    font-size: 2rem;
-    font-weight: 900;
-    font-family: 'Orbitron', sans-serif;
-    color: var(--accent-bright);
-    margin-bottom: 24px;
-  }
-
-  .pricing-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .pricing-features li {
-    font-size: 0.9rem;
-    color: var(--text);
-  }
-
-  .pricing-features li.muted {
-    color: var(--text-muted);
-  }
-
-  /* ── Footer ── */
+  /* ───────────── Footer ───────────── */
   .footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     padding: 48px 0;
-    margin-top: 40px;
   }
-
   .footer-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
     text-align: center;
   }
-
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
   .footer-nav {
     display: flex;
-    gap: 24px;
+    gap: 22px;
     flex-wrap: wrap;
     justify-content: center;
   }
-
   .footer-nav a {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.84rem;
+    color: var(--text-mute);
     transition: color 0.2s;
   }
-
-  .footer-nav a:hover {
-    color: var(--accent-bright);
-    text-decoration: none;
+  .footer-nav a:hover { color: var(--fight-soft); }
+  .footer-copy {
+    font-size: 0.74rem;
+    color: var(--text-mute);
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
   }
 
-  .footer-copy {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  /* ───────────── Reveal (device) ───────────── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+  }
+  @keyframes reveal {
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ───────────── Responsive ───────────── */
+  @media (max-width: 860px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+    .hero-device { order: -1; }
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-actions { display: flex; justify-content: center; }
+    .legend { justify-content: center; }
+  }
+
+  @media (max-width: 640px) {
+    .block { padding: 72px 0; }
+    .hero { padding: 64px 0 72px; }
+    .screenshots-grid { grid-template-columns: 1fr; gap: 32px; max-width: 320px; margin: 0 auto; }
+  }
+
+  @media (max-width: 420px) {
+    .logo { font-size: 1.1rem; }
+    .header-cta { font-size: 0.72rem; padding: 8px 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .device-screen, .tmr-phase-label, .tmr-next, .hero, .hero-bg::after, .device { transition: none; }
+    [data-reveal] { animation: none; opacity: 1; transform: none; }
   }
 </style>
+
+<script>
+  type Phase = { key: 'fight' | 'rest'; label: string; sub: string; total: number; next: string }
+
+  const phases: Phase[] = [
+    { key: 'fight', label: 'FIGHT', sub: '集中', total: 25 * 60, next: '休憩 5:00' },
+    { key: 'rest', label: 'REST', sub: '整える', total: 5 * 60, next: '集中 25:00' },
+  ]
+
+  const DEMO_MS = 5800 // wall-clock time to play one phase in the hero demo
+
+  const hero = document.querySelector<HTMLElement>('.hero')
+  const ring = document.querySelector<HTMLElement>('[data-tmr="ring"]')
+  const els = {
+    label: document.querySelector<HTMLElement>('[data-tmr="label"]'),
+    sub: document.querySelector<HTMLElement>('[data-tmr="sub"]'),
+    time: document.querySelector<HTMLElement>('[data-tmr="time"]'),
+    total: document.querySelector<HTMLElement>('[data-tmr="total"]'),
+    set: document.querySelector<HTMLElement>('[data-tmr="set"]'),
+    next: document.querySelector<HTMLElement>('[data-tmr="next"]'),
+  }
+
+  const fmt = (s: number) => {
+    const m = Math.floor(s / 60)
+    const sec = Math.floor(s % 60)
+    return `${m}:${sec.toString().padStart(2, '0')}`
+  }
+
+  const render = (phase: Phase, remain: number, progress: number, set: number) => {
+    if (els.label) els.label.textContent = phase.label
+    if (els.sub) els.sub.textContent = phase.sub
+    if (els.time) els.time.textContent = fmt(remain)
+    if (els.total) els.total.textContent = fmt(phase.total)
+    if (els.next) els.next.textContent = phase.next
+    if (els.set) els.set.textContent = String(set)
+    if (ring) ring.style.setProperty('--p', progress.toFixed(4))
+    if (hero) hero.dataset.phase = phase.key
+  }
+
+  if (hero && ring) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      // static, representative state
+      render(phases[0], 16 * 60, 0.64, 1)
+    } else {
+      let idx = 0
+      let set = 1
+      let start = performance.now()
+
+      const tick = (now: number) => {
+        const phase = phases[idx]
+        const f = Math.min((now - start) / DEMO_MS, 1)
+        const remain = Math.ceil(phase.total * (1 - f))
+        render(phase, remain, 1 - f, set)
+
+        if (f >= 1) {
+          // advance; one completed REST closes a set (cap the display at 4)
+          if (phase.key === 'rest') set = (set % 4) + 1
+          idx = (idx + 1) % phases.length
+          start = now
+        }
+        requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }
+  }
+</script>

@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = 'FocusRest — 集中と休憩を、あなたのリズムに。',
-  description = '仕事も筋トレも、インターバルで加速する。カスタムタイマーとアラーム音で集中と休憩を最適化するiOSアプリ。',
+  title = 'FightandRest — 集中と休憩を、あなたのリズムに。',
+  description = '仕事も筋トレも、インターバルでメリハリを。カスタムタイマーとアラーム音で集中（FIGHT）と休憩（REST）を最適化するiOSアプリ。',
 } = Astro.props
 ---
 
@@ -16,13 +16,12 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <!--<link rel="icon" type="image/svg+xml" href="/favicon.svg" />-->
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -39,16 +38,33 @@ const {
   }
 
   :root {
-    --bg: #120019;
-    --bg-card: #1c0028;
-    --bg-card-hover: #220030;
-    --accent: #9575cd;
-    --accent-bright: #b39ddb;
-    --accent-glow: rgba(149, 117, 205, 0.25);
-    --text: #f0e6ff;
-    --text-muted: #8a7a9b;
-    --border: rgba(149, 117, 205, 0.2);
-    --shadow-neo: 4px 4px 12px rgba(0, 0, 0, 0.5), -2px -2px 8px rgba(149, 117, 205, 0.08);
+    /* base — neutral ink so both poles read cleanly */
+    --ink: #0e0e13;
+    --surface: #16161e;
+    --surface-2: #1d1d28;
+    --text: #ecebf4;
+    --text-mute: #928fa0;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.16);
+
+    /* FIGHT pole — ember / burn / effort */
+    --fight: #ff5a36;
+    --fight-soft: #ff8a5e;
+    --fight-glow: rgba(255, 90, 54, 0.26);
+
+    /* REST pole — recovery mint / breath / calm */
+    --rest: #2fe0b6;
+    --rest-soft: #79eed4;
+    --rest-glow: rgba(47, 224, 182, 0.22);
+
+    /* per-section accent; overridden by .pole-fight / .pole-rest */
+    --accent: var(--fight);
+    --accent-soft: var(--fight-soft);
+    --accent-glow: var(--fight-glow);
+
+    --font-display: 'Saira Condensed', 'Noto Sans JP', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'Noto Sans JP', sans-serif;
   }
 
   html {
@@ -56,24 +72,21 @@ const {
   }
 
   body {
-    background-color: var(--bg);
+    background-color: var(--ink);
     color: var(--text);
-    font-family: 'Noto Sans JP', sans-serif;
-    line-height: 1.7;
+    font-family: var(--font-body);
+    line-height: 1.75;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3 {
-    line-height: 1.3;
+    line-height: 1.2;
   }
 
   a {
-    color: var(--accent-bright);
+    color: var(--accent-soft);
     text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
   }
 
   img {
@@ -81,32 +94,67 @@ const {
     display: block;
   }
 
+  ::selection {
+    background: var(--accent);
+    color: #0a0a0d;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-soft);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   .container {
-    max-width: 1100px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  .section-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+  /* mono eyebrow — the page's structural voice (timer-panel language) */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 48px;
-    color: var(--accent-bright);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
-  .badge {
-    display: inline-block;
-    background: var(--accent-glow);
-    border: 1px solid var(--border);
-    color: var(--accent-bright);
-    font-size: 0.75rem;
+  .eyebrow::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .section-head {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-family: var(--font-body);
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 100px;
-    margin-bottom: 16px;
+    margin-top: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  /* pole accent overrides — drive the FIGHT⇄REST rhythm across sections */
+  .pole-fight {
+    --accent: var(--fight);
+    --accent-soft: var(--fight-soft);
+    --accent-glow: var(--fight-glow);
+  }
+
+  .pole-rest {
+    --accent: var(--rest);
+    --accent-soft: var(--rest-soft);
+    --accent-glow: var(--rest-glow);
   }
 </style>
