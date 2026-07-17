@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import timerImg from '../assets/timer.png'
 import settingsImg from '../assets/settings.png'
-import timerListImg from '../assets/list.png'
+import timerListImg from '../assets/timer.png'
 import appStoreBadge from '../assets/app_store_badge_jp_white.svg'
 
 const features = [
@@ -22,7 +22,7 @@ const features = [
     no: '03',
     icon: '🎵',
     title: 'アラーム音カスタマイズ',
-    description: 'FIGHTとRESTのアラーム音を別々に設定。音だけで「今どっちの時間か」が体に染み込む。',
+    description: 'FOCUSとRESTのアラーム音を別々に設定。音だけで「今どっちの時間か」が体に染み込む。',
   },
   {
     no: '04',
@@ -44,14 +44,15 @@ const screens = [
   <header class="header">
     <div class="container header-inner">
       <a href="#top" class="logo">
-        <span class="logo-fight">Fight</span><span class="logo-and">and</span><span class="logo-rest">Rest</span>
+        <!--<span class="logo-focus">focus</span><span class="logo-and">and</span><span class="logo-rest">Rest</span>-->
+        <span class="logo-focus">FOCUS</span><span class="logo-rest">Rest</span>
       </a>
       <a href="#download" class="header-cta">無料で始める</a>
     </div>
   </header>
 
   <!-- ========== HERO ========== -->
-  <section class="hero" id="top" data-phase="fight">
+  <section class="hero" id="top" data-phase="focus">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
       <div class="hero-text">
@@ -59,7 +60,7 @@ const screens = [
         <h1 class="hero-title">集中と休憩を、<br />あなたのリズムに。</h1>
         <p class="hero-sub">仕事も筋トレも、インターバルでメリハリを。</p>
         <p class="hero-desc">
-          <b class="hl hl-fight">FIGHT</b> と <b class="hl hl-rest">REST</b> を行き来するだけ。
+          <b class="hl hl-focus">FOCUS</b> と <b class="hl hl-rest">REST</b> を行き来するだけ。
           カスタムの時間・音・テーマで、自分だけのリズムを刻める。
         </p>
 
@@ -70,7 +71,7 @@ const screens = [
         </div>
 
         <ul class="legend" aria-hidden="true">
-          <li class="leg leg-fight"><span class="leg-dot"></span>FIGHT<small>集中する時間</small></li>
+          <li class="leg leg-focus"><span class="leg-dot"></span>FOCUS<small>集中する時間</small></li>
           <li class="leg leg-rest"><span class="leg-dot"></span>REST<small>整える時間</small></li>
         </ul>
       </div>
@@ -82,13 +83,13 @@ const screens = [
           <div class="device-screen">
             <div class="app-statusbar" aria-hidden="true">
               <span>9:41</span>
-              <span class="app-name">FightandRest</span>
+              <span class="app-name">FocusRest</span>
               <span>􀙇</span>
             </div>
 
-            <div class="tmr" role="img" aria-label="インターバルタイマーのデモ。FIGHTとRESTを切り替えながらカウントダウンします。">
+            <div class="tmr" role="img" aria-label="インターバルタイマーのデモ。FOCUSとRESTを切り替えながらカウントダウンします。">
               <div class="tmr-phase">
-                <span class="tmr-phase-label" data-tmr="label">FIGHT</span>
+                <span class="tmr-phase-label" data-tmr="label">FOCUS</span>
                 <span class="tmr-phase-sub" data-tmr="sub">集中</span>
               </div>
 
@@ -111,7 +112,7 @@ const screens = [
   </section>
 
   <!-- ========== FEATURES ========== -->
-  <section class="block features pole-fight">
+  <section class="block features pole-focus">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">TOOLKIT / 機能</span>
@@ -154,11 +155,11 @@ const screens = [
   </section>
 
   <!-- ========== USE CASES ========== -->
-  <section class="block use-cases pole-fight">
+  <section class="block use-cases pole-focus">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">SCENES / 使いどころ</span>
-        <h2 class="section-title">FIGHT も REST も、選ばない</h2>
+        <h2 class="section-title">FOCUS も REST も、選ばない</h2>
       </div>
       <div class="use-cases-grid">
         <div class="use-case-card">
@@ -193,16 +194,16 @@ const screens = [
             <li class="muted">広告あり</li>
           </ul>
         </div>
-        <div class="pricing-card pricing-card--premium">
-          <div class="pricing-badge">おすすめ</div>
-          <div class="pricing-label">プレミアム</div>
-          <div class="pricing-price">買い切り</div>
-          <ul class="pricing-features">
-            <li>無料のすべての機能</li>
-            <li><strong>広告なし</strong></li>
-            <li class="muted">一度の購入でずっと</li>
-          </ul>
-        </div>
+        <!--<div class="pricing-card pricing-card&#45;&#45;premium">-->
+        <!--  <div class="pricing-badge">おすすめ</div>-->
+        <!--  <div class="pricing-label">プレミアム</div>-->
+        <!--  <div class="pricing-price">買い切り</div>-->
+        <!--  <ul class="pricing-features">-->
+        <!--    <li>無料のすべての機能</li>-->
+        <!--    <li><strong>広告なし</strong></li>-->
+        <!--    <li class="muted">一度の購入でずっと</li>-->
+        <!--  </ul>-->
+        <!--</div>-->
       </div>
       <div class="pricing-cta">
         <a href="#" class="appstore-btn" aria-label="App Store でダウンロード">
@@ -216,7 +217,7 @@ const screens = [
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <span class="logo-fight">Fight</span><span class="logo-and">and</span><span class="logo-rest">Rest</span>
+        <span class="logo-focus">FOCUS</span><span class="logo-rest">Rest</span>
       </div>
       <nav class="footer-nav" aria-label="フッター">
         <a href="/privacy">プライバシーポリシー</a>
@@ -254,7 +255,7 @@ const screens = [
     color: var(--text);
   }
 
-  .logo-fight { color: var(--fight); }
+  .logo-focus { color: var(--focus); }
   .logo-and   { color: var(--text-mute); margin: 0 1px; font-weight: 600; }
   .logo-rest  { color: var(--rest); }
 
@@ -271,9 +272,9 @@ const screens = [
   }
 
   .header-cta:hover {
-    border-color: var(--fight);
-    color: var(--fight-soft);
-    background: var(--fight-glow);
+    border-color: var(--focus);
+    color: var(--focus-soft);
+    background: var(--focus-glow);
   }
 
   /* ───────────── Hero ───────────── */
@@ -282,9 +283,9 @@ const screens = [
     padding: 96px 0 88px;
     overflow: hidden;
     /* the active pole follows the live timer phase via [data-phase] */
-    --accent: var(--fight);
-    --accent-soft: var(--fight-soft);
-    --accent-glow: var(--fight-glow);
+    --accent: var(--focus);
+    --accent-soft: var(--focus-soft);
+    --accent-glow: var(--focus-glow);
     transition: --accent 0.6s;
   }
 
@@ -300,7 +301,7 @@ const screens = [
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(620px 480px at 88% -8%, var(--fight-glow), transparent 60%),
+      radial-gradient(620px 480px at 88% -8%, var(--focus-glow), transparent 60%),
       radial-gradient(560px 460px at 6% 112%, var(--rest-glow), transparent 60%);
   }
 
@@ -352,7 +353,7 @@ const screens = [
     font-size: 0.92em;
     letter-spacing: 0.04em;
   }
-  .hl-fight { color: var(--fight-soft); }
+  .hl-focus { color: var(--focus-soft); }
   .hl-rest  { color: var(--rest-soft); }
 
   .hero-actions { margin-bottom: 32px; }
@@ -364,7 +365,7 @@ const screens = [
   .appstore-btn:hover { opacity: 0.88; transform: translateY(-1px); }
   .appstore-btn img { height: 48px; width: auto; }
 
-  /* fight/rest legend */
+  /* focus/rest legend */
   .legend {
     list-style: none;
     display: flex;
@@ -396,17 +397,17 @@ const screens = [
     width: 8px; height: 8px; border-radius: 50%;
     background: currentColor;
   }
-  .leg-fight { color: var(--fight); }
+  .leg-focus { color: var(--focus); }
   .leg-rest  { color: var(--rest); }
 
   /* active phase chip lights up */
-  .hero[data-phase='fight'] .leg-fight,
+  .hero[data-phase='focus'] .leg-focus,
   .hero[data-phase='rest'] .leg-rest {
     border-color: var(--accent);
     background: var(--accent-glow);
     color: var(--accent-soft);
   }
-  .hero[data-phase='fight'] .leg-fight .leg-dot { box-shadow: 0 0 12px var(--fight); }
+  .hero[data-phase='focus'] .leg-focus .leg-dot { box-shadow: 0 0 12px var(--focus); }
   .hero[data-phase='rest'] .leg-rest .leg-dot { box-shadow: 0 0 12px var(--rest); }
 
   /* ───────── Phone + live timer ───────── */
@@ -780,7 +781,7 @@ const screens = [
     color: var(--text-mute);
     transition: color 0.2s;
   }
-  .footer-nav a:hover { color: var(--fight-soft); }
+  .footer-nav a:hover { color: var(--focus-soft); }
   .footer-copy {
     font-size: 0.74rem;
     color: var(--text-mute);
@@ -829,10 +830,10 @@ const screens = [
 </style>
 
 <script>
-  type Phase = { key: 'fight' | 'rest'; label: string; sub: string; total: number; next: string }
+  type Phase = { key: 'focus' | 'rest'; label: string; sub: string; total: number; next: string }
 
   const phases: Phase[] = [
-    { key: 'fight', label: 'FIGHT', sub: '集中', total: 25 * 60, next: '休憩 5:00' },
+    { key: 'focus', label: 'FOCUS', sub: '集中', total: 25 * 60, next: '休憩 5:00' },
     { key: 'rest', label: 'REST', sub: '整える', total: 5 * 60, next: '集中 25:00' },
   ]
 

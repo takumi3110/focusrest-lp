@@ -5,8 +5,8 @@ interface Props {
 }
 
 const {
-  title = 'FightandRest — 集中と休憩を、あなたのリズムに。',
-  description = '仕事も筋トレも、インターバルでメリハリを。カスタムタイマーとアラーム音で集中（FIGHT）と休憩（REST）を最適化するiOSアプリ。',
+  title = 'FocusRest — 集中と休憩を、あなたのリズムに。',
+  description = '仕事も筋トレも、インターバルでメリハリを。カスタムタイマーとアラーム音で集中（FOCUS）と休憩（REST）を最適化するiOSアプリ。',
 } = Astro.props
 ---
 
@@ -47,20 +47,20 @@ const {
     --line: rgba(255, 255, 255, 0.09);
     --line-strong: rgba(255, 255, 255, 0.16);
 
-    /* FIGHT pole — ember / burn / effort */
-    --fight: #ff5a36;
-    --fight-soft: #ff8a5e;
-    --fight-glow: rgba(255, 90, 54, 0.26);
+    /* focus pole — ember / burn / effort */
+    --focus: #ff5a36;
+    --focus-soft: #ff8a5e;
+    --focus-glow: rgba(255, 90, 54, 0.26);
 
     /* REST pole — recovery mint / breath / calm */
     --rest: #2fe0b6;
     --rest-soft: #79eed4;
     --rest-glow: rgba(47, 224, 182, 0.22);
 
-    /* per-section accent; overridden by .pole-fight / .pole-rest */
-    --accent: var(--fight);
-    --accent-soft: var(--fight-soft);
-    --accent-glow: var(--fight-glow);
+    /* per-section accent; overridden by .pole-focus / .pole-rest */
+    --accent: var(--focus);
+    --accent-soft: var(--focus-soft);
+    --accent-glow: var(--focus-glow);
 
     --font-display: 'Saira Condensed', 'Noto Sans JP', sans-serif;
     --font-mono: 'Space Mono', monospace;
@@ -145,11 +145,11 @@ const {
     letter-spacing: 0.01em;
   }
 
-  /* pole accent overrides — drive the FIGHT⇄REST rhythm across sections */
-  .pole-fight {
-    --accent: var(--fight);
-    --accent-soft: var(--fight-soft);
-    --accent-glow: var(--fight-glow);
+  /* pole accent overrides — drive the focus⇄REST rhythm across sections */
+  .pole-focus {
+    --accent: var(--focus);
+    --accent-soft: var(--focus-soft);
+    --accent-glow: var(--focus-glow);
   }
 
   .pole-rest {
